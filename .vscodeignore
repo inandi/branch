@@ -1,0 +1,7 @@
+**/.vscode/**
+**/.github/**
+**/*.ts
+**/*.map
+**/tsconfig.json
+node_modules/**
+

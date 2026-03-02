@@ -1,0 +1,64 @@
+{
+  "name": "fork",
+  "displayName": "Fork",
+  "description": "Create standardized git branches from the status bar.",
+  "version": "0.0.1",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "SCM Providers"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:fork.createBranch"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "fork.createBranch",
+        "title": "Fork: Create structured branch"
+      }
+    ],
+    "configuration": {
+      "title": "Fork",
+      "properties": {
+        "fork.types": {
+          "type": "array",
+          "default": [
+            "feature",
+            "bug",
+            "hotfix"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Branch type prefixes shown in the picker (e.g. feature, bug, hotfix)."
+        },
+        "fork.maxSlugLength": {
+          "type": "number",
+          "default": 80,
+          "minimum": 1,
+          "description": "Maximum length of the slugified title portion."
+        },
+        "fork.statusBarLabel": {
+          "type": "string",
+          "default": "$(git-branch) fork",
+          "description": "Status bar label (Codicons supported)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "@types/vscode": "^1.109.0",
+    "typescript": "^5.9.3"
+  }
+}
