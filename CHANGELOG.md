@@ -1,3 +1,10 @@
+# Release v1.1.2 - 2026-03-03
+
+## Improvements
+- **Tooling and dependencies**: Updated development dependencies (including VS Code typings) to align with the supported VS Code engine.
+
+---
+
 # Release v1.1.1 - 2026-03-03
 
 ## New Features
