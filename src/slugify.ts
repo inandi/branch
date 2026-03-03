@@ -1,5 +1,5 @@
 /**
- * Fork Slugify Module
+ * Forks Slugify Module
  *
  * Utilities to turn human-readable titles and branch segments into git-safe slugs:
  * lowercase, hyphen-separated, no special characters, optional max length.

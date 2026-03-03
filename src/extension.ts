@@ -1,8 +1,8 @@
 /**
- * Fork Extension Entry Module
+ * Forks Extension Entry Module
  *
  * VS Code extension that creates structured git branches from the status bar.
- * Registers the fork.createBranch command, shows a status bar item only when the workspace
+ * Registers the forks.createBranch command, shows a status bar item only when the workspace
  * has a git repo, and runs the flow: pick folder → resolve repo/base branch → pick type →
  * input title → slugify → git checkout -b type/baseBranch/slug.
  *
@@ -24,11 +24,11 @@ type TypePickItem =
   | (vscode.QuickPickItem & { itemKind: "manage" });
 
 /**
- * Get the Fork extension configuration (fork.* settings).
- * @returns Workspace configuration for the "fork" namespace
+ * Get the Forks extension configuration (forks.* settings).
+ * @returns Workspace configuration for the "forks" namespace
  */
 function getConfig() {
-  return vscode.workspace.getConfiguration("fork");
+  return vscode.workspace.getConfiguration("forks");
 }
 
 /**
@@ -41,7 +41,7 @@ function getConfig() {
 async function pickWorkspaceFolder(): Promise<vscode.WorkspaceFolder> {
   const folders = vscode.workspace.workspaceFolders ?? [];
   if (folders.length === 0) {
-    throw new Error("Open a folder/workspace to use Fork.");
+    throw new Error("Open a folder/workspace to use Forks.");
   }
   if (folders.length === 1) return folders[0];
 
@@ -59,7 +59,7 @@ async function pickWorkspaceFolder(): Promise<vscode.WorkspaceFolder> {
 
 /**
  * Check if any opened workspace folder contains a .git directory.
- * Used to decide whether to show the Fork status bar item.
+ * Used to decide whether to show the Forks status bar item.
  *
  * @param folders - Current workspace folders (or undefined)
  * @returns true if at least one folder has a .git directory
@@ -83,7 +83,7 @@ function workspaceHasGitRepo(folders: readonly vscode.WorkspaceFolder[] | undefi
 }
 
 /**
- * Read branch type prefixes from settings (fork.types).
+ * Read branch type prefixes from settings (forks.types).
  * @returns Non-empty, deduplicated list of type strings (default: feature, bug, hotfix)
  */
 function getBranchTypes(): string[] {
@@ -99,7 +99,7 @@ function getBranchTypes(): string[] {
 }
 
 /**
- * Read max slug length from settings (fork.maxSlugLength).
+ * Read max slug length from settings (forks.maxSlugLength).
  * @returns Positive number (default 80) or 80 if invalid
  */
 function getMaxSlugLength(): number {
@@ -109,12 +109,12 @@ function getMaxSlugLength(): number {
 }
 
 /**
- * Read status bar label from settings (fork.statusBarLabel).
- * @returns Label string (default: "$(git-branch) fork")
+ * Read status bar label from settings (forks.statusBarLabel).
+ * @returns Label string (default: "$(git-branch) forks")
  */
 function getStatusBarLabel(): string {
   const cfg = getConfig();
-  return cfg.get<string>("statusBarLabel", "$(git-branch) fork");
+  return cfg.get<string>("statusBarLabel", "$(git-branch) forks");
 }
 
 /**
@@ -140,15 +140,15 @@ async function showTypePicker(types: string[]): Promise<TypePickItem | undefined
 
 /**
  * Called when the extension is activated (e.g. on startup or when command runs).
- * Registers fork.createBranch, creates status bar item only when workspace has git,
+ * Registers forks.createBranch, creates status bar item only when workspace has git,
  * and subscribes config change for status bar label.
  *
  * @param context - Extension context for subscriptions
  */
 export function activate(context: vscode.ExtensionContext) {
-  const output = vscode.window.createOutputChannel("Fork");
+  const output = vscode.window.createOutputChannel("Forks");
 
-  const cmd = vscode.commands.registerCommand("fork.createBranch", async () => {
+  const cmd = vscode.commands.registerCommand("forks.createBranch", async () => {
     try {
       const folder = await pickWorkspaceFolder();
       const repoRoot = await getRepoRoot(folder.uri.fsPath);
@@ -163,7 +163,7 @@ export function activate(context: vscode.ExtensionContext) {
       if (!picked) return;
 
       if (picked.itemKind === "manage") {
-        await vscode.commands.executeCommand("workbench.action.openSettings", "fork.types");
+        await vscode.commands.executeCommand("workbench.action.openSettings", "forks.types");
         return;
       }
 
@@ -186,15 +186,15 @@ export function activate(context: vscode.ExtensionContext) {
       }
 
       const branchName = `${picked.branchType}/${baseBranch}/${slug}`;
-      output.appendLine(`[fork] repoRoot=${repoRoot}`);
-      output.appendLine(`[fork] baseBranch=${baseBranchRaw}`);
-      output.appendLine(`[fork] create=${branchName}`);
+      output.appendLine(`[forks] repoRoot=${repoRoot}`);
+      output.appendLine(`[forks] baseBranch=${baseBranchRaw}`);
+      output.appendLine(`[forks] create=${branchName}`);
 
       await checkoutNewBranch(repoRoot, branchName);
       vscode.window.showInformationMessage(`Switched to ${branchName}`);
     } catch (err) {
       const message = formatGitError(err) || String(err);
-      output.appendLine(`[fork] error: ${message}`);
+      output.appendLine(`[forks] error: ${message}`);
       vscode.window.showErrorMessage(message);
     }
   });
@@ -204,7 +204,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   if (hasGit) {
     const status = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
-    status.command = "fork.createBranch";
+    status.command = "forks.createBranch";
     status.text = getStatusBarLabel();
     status.tooltip = "Create a structured git branch";
     status.show();
@@ -212,7 +212,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(status);
 
     vscode.workspace.onDidChangeConfiguration((e) => {
-      if (e.affectsConfiguration("fork.statusBarLabel")) {
+      if (e.affectsConfiguration("forks.statusBarLabel")) {
         status.text = getStatusBarLabel();
       }
     });

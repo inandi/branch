@@ -1,5 +1,5 @@
 /**
- * Fork Git Module
+ * Forks Git Module
  *
  * Runs git commands in the workspace repo: resolve root, current branch, and create/checkout branches.
  * Uses execFile with repo root as cwd; formats errors for user display (e.g. ENOENT → "install git").

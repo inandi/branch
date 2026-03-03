@@ -1,11 +1,11 @@
 # Architecture & data flow
 
-Fork is a small VS Code extension that wires UI prompts to a git command.
+Forks is a small VS Code extension that wires UI prompts to a git command.
 
 ## Main components
 
 - **Entry point**: `src/extension.ts`
-  - Registers command `fork.createBranch`
+  - Registers command `forks.createBranch`
   - Creates the status bar item (click → command)
   - Orchestrates the picker + input + git execution
 - **Git adapter**: `src/git.ts`
@@ -20,7 +20,7 @@ Fork is a small VS Code extension that wires UI prompts to a git command.
 
 ```mermaid
 flowchart TD
-  userClick[User_clicks_statusBar] --> command[fork.createBranch]
+  userClick[User_clicks_statusBar] --> command[forks.createBranch]
   command --> ws[Pick_workspace_folder]
   ws --> repo[Resolve_repo_root]
   repo --> base[Read_current_branch_as_baseBranch]

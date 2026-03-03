@@ -1,45 +1,3 @@
-# Release v1.1.4 - 2026-03-03
-
-## New Features
-- NA
-
-## Improvements
-- NA
-
-## Bug Fixes
-- NA
-
-## Deprecated Features
-- NA
-
-## Known Issues
-- NA
-
-## Acknowledgments
-- NA
----
-
-# Release v1.1.3 - 2026-03-03
-
-## New Features
-- NA
-
-## Improvements
-- NA
-
-## Bug Fixes
-- NA
-
-## Deprecated Features
-- NA
-
-## Known Issues
-- NA
-
-## Acknowledgments
-- NA
----
-
 # Release v1.1.2 - 2026-03-03
 
 ## Improvements
@@ -50,9 +8,9 @@
 # Release v1.1.1 - 2026-03-03
 
 ## New Features
-- **Fork status bar branch creator**: Create git branches from the status bar using the format `type/baseBranch/slug`.
-- **Configurable branch types and slug length**: Control prefixes and slug length via `fork.types`, `fork.maxSlugLength`, and `fork.statusBarLabel`.
-- **Git-aware behavior**: Only shows the Fork icon when a workspace folder contains a `.git` directory and uses the current branch as the base.
+- **Forks status bar branch creator**: Create git branches from the status bar using the format `type/baseBranch/slug`.
+- **Configurable branch types and slug length**: Control prefixes and slug length via `forks.types`, `forks.maxSlugLength`, and `forks.statusBarLabel`.
+- **Git-aware behavior**: Only shows the Forks icon when a workspace folder contains a `.git` directory and uses the current branch as the base.
 
 ## Improvements
 - **Error handling and UX**: Clear messages for non-git folders, detached HEAD, missing git, and invalid titles.
