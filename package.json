@@ -1,0 +1,76 @@
+{
+  "name": "forks-inandi",
+  "displayName": "Forks",
+  "description": "Standardize git branch names from the status bar.",
+  "version": "1.2.2",
+  "publisher": "iNandi",
+  "author": {
+    "name": "Gobinda Nandi",
+    "email": "gobinda.nandi.public@gmail.com",
+    "url": "https://inandi.github.io/portfolio/index.html"
+  },
+  "icon": "media/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iNandi/forks"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:forks.createBranch"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "forks.createBranch",
+        "title": "Forks: Create structured branch"
+      }
+    ],
+    "configuration": {
+      "title": "Forks",
+      "properties": {
+        "forks.types": {
+          "type": "array",
+          "default": [
+            "feature",
+            "bug",
+            "hotfix"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Branch type prefixes shown in the picker (e.g. feature, bug, hotfix)."
+        },
+        "forks.maxSlugLength": {
+          "type": "number",
+          "default": 80,
+          "minimum": 1,
+          "description": "Maximum length of the slugified title portion."
+        },
+        "forks.statusBarLabel": {
+          "type": "string",
+          "default": "$(git-branch) forks",
+          "description": "Status bar label (Codicons supported)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.9.3"
+  }
+}
