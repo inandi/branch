@@ -97,13 +97,13 @@ if [ -f ".publish-secrets" ]; then
             echo "✗ Failed to publish to VS Code Marketplace"
         fi
         
-        # Publish to Open VSX Registry
-        echo "Publishing to Open VSX Registry..."
-        if ovsx publish -p "$OVSX_PAT"; then
-            echo "✓ Successfully published to Open VSX Registry"
-        else
-            echo "✗ Failed to publish to Open VSX Registry"
-        fi
+        # # Publish to Open VSX Registry
+        # echo "Publishing to Open VSX Registry..."
+        # if ovsx publish -p "$OVSX_PAT"; then
+        #     echo "✓ Successfully published to Open VSX Registry"
+        # else
+        #     echo "✗ Failed to publish to Open VSX Registry"
+        # fi
     fi
 else
     echo "Warning: .publish-secrets file not found."
