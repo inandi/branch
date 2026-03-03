@@ -1,3 +1,26 @@
+# Release v1.2.2 - 2026-03-03
+
+## New Features
+- No new user-facing features in this release.
+
+## Improvements
+- Renamed the extension from "Fork" to "Forks" and updated commands, configuration keys, docs, and marketplace metadata for consistent branding.
+- Updated tooling and development dependencies (including VS Code typings) to align with the supported VS Code engine.
+
+## Bug Fixes
+- No specific bug fixes recorded for this release.
+
+## Deprecated Features
+- None.
+
+## Known Issues
+- None new; see CHANGELOG and GitHub issues for existing items.
+
+## Acknowledgments
+- Thanks to everyone using Forks and providing feedback.
+
+---
+
 # Release v1.1.2 - 2026-03-03
 
 ## Improvements
