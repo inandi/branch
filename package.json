@@ -1,15 +1,23 @@
 {
   "name": "fork",
   "displayName": "Fork",
-  "description": "Create standardized git branches from the status bar.",
-  "version": "0.0.1",
-  "publisher": "local",
-  "engines": {
-    "vscode": "^1.90.0"
+  "description": "Standardize git branch names from the status bar.",
+  "version": "1.1.1",
+  "publisher": "iNandi",
+  "author": {
+    "name": "Gobinda Nandi",
+    "email": "gobinda.nandi.public@gmail.com",
+    "url": "https://inandi.github.io/portfolio/index.html"
   },
-  "categories": [
-    "SCM Providers"
-  ],
+  "icon": "media/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iNandi/fork"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Other"],
   "activationEvents": [
     "onStartupFinished",
     "onCommand:fork.createBranch"
@@ -54,11 +62,15 @@
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -w -p ./"
+    "watch": "tsc -w -p ./",
+    "lint": "eslint src --ext ts"
   },
   "devDependencies": {
     "@types/node": "^25.3.3",
     "@types/vscode": "^1.109.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
     "typescript": "^5.9.3"
   }
 }
