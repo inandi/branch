@@ -1,3 +1,15 @@
+# Release v2.1.1 - 2026-04-07
+
+## Improvements
+- Updated release automation to support publishing to both Visual Studio Marketplace and Open VSX Registry.
+- Added release-time validation to ensure `package.json` version consistency before publishing.
+- Marked the extension as a preview release.
+
+## Bug Fixes
+- Improved publishing token checks and error handling in the release script to fail fast with clearer messages.
+
+---
+
 # Release v1.2.2 - 2026-03-03
 
 ## New Features
