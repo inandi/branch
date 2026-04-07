@@ -2,7 +2,8 @@
   "name": "forks-inandi",
   "displayName": "Forks",
   "description": "Standardize git branch names from the status bar.",
-  "version": "1.2.2",
+  "version": "2.1.1",
+  "preview": true,
   "publisher": "iNandi",
   "author": {
     "name": "Gobinda Nandi",
