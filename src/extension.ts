@@ -156,7 +156,11 @@ export function activate(context: vscode.ExtensionContext) {
       if (!baseBranchRaw || baseBranchRaw === "HEAD") {
         throw new Error("Detached HEAD: check out a base branch (e.g. main) first.");
       }
-      const baseBranch = sanitizeBranchSegment(baseBranchRaw);
+
+      const useLastSegment = getConfig().get<boolean>("useLastSegmentAsBase", false);
+      const baseBranch = useLastSegment
+        ? sanitizeBranchSegment(baseBranchRaw.split("/").pop() || baseBranchRaw)
+        : sanitizeBranchSegment(baseBranchRaw);
 
       const types = getBranchTypes();
       const picked = await showTypePicker(types);
