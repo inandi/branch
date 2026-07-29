@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Forks [Beta]</h1>
+  <h1>Forks Next</h1>
   <p><strong>Standardized Git Branches from the Status Bar</strong></p>
 </div>
 
@@ -60,17 +60,11 @@ Configure Forks under the **Forks** section in settings (`forks.*`):
 
 Press **F5** to launch the Extension Development Host.
 
-## Support the Project
-
-If Forks helps your workflow, you can support the project (no pressure):
-
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/igobinda)
-
 ## Need Help?
 
 - **Docs**: See [docs/README.md](docs/README.md) for overview, [docs/architecture.md](docs/architecture.md) for data flow, and [docs/configuration.md](docs/configuration.md) for settings
 - **Issues**: Found a bug or have an idea? Open an issue on GitHub
-- **Repository**: [github.com/iNandi/forks](https://github.com/iNandi/forks)
+- **Repository**: [github.com/2501224066/forks](https://github.com/2501224066/forks)
 
 ## License
 
@@ -78,4 +72,4 @@ This project is licensed under the MIT License.
 
 ---
 
-**Made with ❤️ by Gobinda Nandi**
+**Made with ❤️ by PopoanFly**
