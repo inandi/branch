@@ -1,28 +1,34 @@
 # Configuration
 
-Forks reads settings from the `forks` namespace.
+Forks Next reads settings from the `forks.next` namespace.
 
 ## Settings
 
-- **`forks.types`** (array of strings)  
+- **`forks.next.types`** (array of strings)  
   Branch type options shown in the picker.  
   Default: `feature`, `bug`, `hotfix`
 
-- **`forks.maxSlugLength`** (number)  
+- **`forks.next.maxSlugLength`** (number)  
   Max length for the slugified title portion.  
   Default: `80`
 
-- **`forks.statusBarLabel`** (string)  
+- **`forks.next.statusBarLabel`** (string)  
   Text shown in the status bar (Codicons supported).  
   Default: `$(git-branch) forks`
+
+- **`forks.next.useLastSegmentAsBase`** (boolean)  
+  Use the last segment of the current branch as the base branch.  
+  When on a branch like `feature/master/test`, uses `test` instead of the full name.  
+  Default: `false`
 
 ## Example `settings.json`
 
 ```json
 {
-  "forks.types": ["feature", "bug", "hotfix", "docs", "refactor", "chore"],
-  "forks.maxSlugLength": 96,
-  "forks.statusBarLabel": "$(git-branch) forks"
+  "forks.next.types": ["feature", "bug", "hotfix", "docs", "refactor", "chore"],
+  "forks.next.maxSlugLength": 96,
+  "forks.next.statusBarLabel": "$(git-branch) forks",
+  "forks.next.useLastSegmentAsBase": false
 }
 ```
 

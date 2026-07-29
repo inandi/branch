@@ -83,12 +83,12 @@ function workspaceHasGitRepo(folders: readonly vscode.WorkspaceFolder[] | undefi
 }
 
 /**
- * Read branch type prefixes from settings (forks.types).
+ * Read branch type prefixes from settings (forks.next.types).
  * @returns Non-empty, deduplicated list of type strings (default: feature, bug, hotfix)
  */
 function getBranchTypes(): string[] {
   const cfg = getConfig();
-  const raw = cfg.get<unknown>("types");
+  const raw = cfg.get<unknown>("next.types");
   const list = Array.isArray(raw) ? raw : ["feature", "bug", "hotfix"];
 
   const types = list
@@ -99,22 +99,22 @@ function getBranchTypes(): string[] {
 }
 
 /**
- * Read max slug length from settings (forks.maxSlugLength).
+ * Read max slug length from settings (forks.next.maxSlugLength).
  * @returns Positive number (default 80) or 80 if invalid
  */
 function getMaxSlugLength(): number {
   const cfg = getConfig();
-  const v = cfg.get<number>("maxSlugLength", 80);
+  const v = cfg.get<number>("next.maxSlugLength", 80);
   return Number.isFinite(v) ? v : 80;
 }
 
 /**
- * Read status bar label from settings (forks.statusBarLabel).
+ * Read status bar label from settings (forks.next.statusBarLabel).
  * @returns Label string (default: "$(git-branch) forks")
  */
 function getStatusBarLabel(): string {
   const cfg = getConfig();
-  return cfg.get<string>("statusBarLabel", "$(git-branch) forks");
+  return cfg.get<string>("next.statusBarLabel", "$(git-branch) forks");
 }
 
 /**
@@ -157,7 +157,7 @@ export function activate(context: vscode.ExtensionContext) {
         throw new Error("Detached HEAD: check out a base branch (e.g. main) first.");
       }
 
-      const useLastSegment = getConfig().get<boolean>("useLastSegmentAsBase", false);
+      const useLastSegment = getConfig().get<boolean>("next.useLastSegmentAsBase", false);
       const baseBranch = useLastSegment
         ? sanitizeBranchSegment(baseBranchRaw.split("/").pop() || baseBranchRaw)
         : sanitizeBranchSegment(baseBranchRaw);
@@ -167,7 +167,7 @@ export function activate(context: vscode.ExtensionContext) {
       if (!picked) return;
 
       if (picked.itemKind === "manage") {
-        await vscode.commands.executeCommand("workbench.action.openSettings", "forks.types");
+        await vscode.commands.executeCommand("workbench.action.openSettings", "forks.next.types");
         return;
       }
 
@@ -216,7 +216,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(status);
 
     vscode.workspace.onDidChangeConfiguration((e) => {
-      if (e.affectsConfiguration("forks.statusBarLabel")) {
+      if (e.affectsConfiguration("forks.next.statusBarLabel")) {
         status.text = getStatusBarLabel();
       }
     });

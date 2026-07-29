@@ -52,11 +52,34 @@ Example: on `main`, choosing **feature** and title **New UI for "User Profile" P
 
 ### Settings
 
-Configure Forks under the **Forks** section in settings (`forks.*`):
+Configure Forks under the **Forks Next** section in settings (`forks.next.*`):
 
-- **forks.types** – Branch type prefixes in the picker (default: `feature`, `bug`, `hotfix`)
-- **forks.maxSlugLength** – Max length for the slug part (default: `80`)
-- **forks.statusBarLabel** – Status bar text (default: `$(git-branch) forks`; Codicons supported)
+- **forks.next.types** – Branch type prefixes in the picker (default: `feature`, `bug`, `hotfix`)
+- **forks.next.maxSlugLength** – Max length for the slug part (default: `80`)
+- **forks.next.statusBarLabel** – Status bar text (default: `$(git-branch) forks`; Codicons supported)
+- **forks.next.useLastSegmentAsBase** – Use the last segment of the current branch as the base branch (default: `false`)
+
+#### `forks.next.useLastSegmentAsBase`
+
+When you work on a branch that already contains nested segments (e.g. `feature/master/test`), Forks normally uses the **entire** current branch name as the base, producing deeply nested results like:
+
+```
+feature/feature-master-test/my-new-feature
+```
+
+Enabling `useLastSegmentAsBase` tells Forks to use only the **last segment** (`test`) as the base branch instead:
+
+```
+feature/test/my-new-feature
+```
+
+| Current branch | Disabled (default) | Enabled |
+|---|---|---|
+| `main` | `feature/main/...` | `feature/main/…` (unchanged) |
+| `feature/master/test` | `feature/feature-master-test/...` | `feature/test/...` |
+| `bug/hotfix/login-bug` | `feature/bug-hotfix-login-bug/...` | `feature/login-bug/...` |
+
+This keeps branch names flat and readable when you branch off an already-structured branch.
 
 Press **F5** to launch the Extension Development Host.
 

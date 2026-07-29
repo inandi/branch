@@ -32,7 +32,7 @@
 
 ## New Features
 - **Forks status bar branch creator**: Create git branches from the status bar using the format `type/baseBranch/slug`.
-- **Configurable branch types and slug length**: Control prefixes and slug length via `forks.types`, `forks.maxSlugLength`, and `forks.statusBarLabel`.
+- **Configurable branch types and slug length**: Control prefixes and slug length via `forks.next.types`, `forks.next.maxSlugLength`, and `forks.next.statusBarLabel`.
 - **Git-aware behavior**: Only shows the Forks icon when a workspace folder contains a `.git` directory and uses the current branch as the base.
 
 ## Improvements
