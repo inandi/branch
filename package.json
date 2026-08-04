@@ -1,23 +1,25 @@
 {
-  "name": "forks-inandi",
-  "displayName": "Forks",
-  "description": "Standardize git branch names from the status bar.",
-  "version": "1.2.2",
-  "publisher": "iNandi",
+  "name": "forks-nest",
+  "displayName": "Forks Next",
+  "description": "Enhancement of fork plugin.Standardize git branch names from the status bar.",
+  "version": "1.0.2",
+  "publisher": "PopoanFly",
   "author": {
-    "name": "Gobinda Nandi",
-    "email": "gobinda.nandi.public@gmail.com",
-    "url": "https://inandi.github.io/portfolio/index.html"
+    "name": "PopoanFly",
+    "email": "2501224066@qq.com",
+    "url": "https://github.com/2501224066"
   },
   "icon": "media/logo.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iNandi/forks"
+    "url": "https://github.com/2501224066/forks"
   },
   "engines": {
     "vscode": "^1.74.0"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "activationEvents": [
     "onStartupFinished",
     "onCommand:forks.createBranch"
@@ -31,9 +33,9 @@
       }
     ],
     "configuration": {
-      "title": "Forks",
+      "title": "Forks Next",
       "properties": {
-        "forks.types": {
+        "forks.next.types": {
           "type": "array",
           "default": [
             "feature",
@@ -45,16 +47,21 @@
           },
           "description": "Branch type prefixes shown in the picker (e.g. feature, bug, hotfix)."
         },
-        "forks.maxSlugLength": {
+        "forks.next.maxSlugLength": {
           "type": "number",
           "default": 80,
           "minimum": 1,
           "description": "Maximum length of the slugified title portion."
         },
-        "forks.statusBarLabel": {
+        "forks.next.statusBarLabel": {
           "type": "string",
           "default": "$(git-branch) forks",
           "description": "Status bar label (Codicons supported)."
+        },
+        "forks.next.useLastSegmentAsBase": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use the last segment of the current branch as the base branch for the new branch. For example, on branch 'feature/master/test', the base branch becomes 'test' instead of 'feature-master-test'."
         }
       }
     }
@@ -71,6 +78,10 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.0.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vsce": "^2.7.0"
+  },
+  "dependencies": {
+    "undici": "^5.28.0"
   }
 }

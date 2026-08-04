@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Forks [Beta]</h1>
+  <h1>Forks Next</h1>
   <p><strong>Standardized Git Branches from the Status Bar</strong></p>
 </div>
 
@@ -52,25 +52,52 @@ Example: on `main`, choosing **feature** and title **New UI for "User Profile" P
 
 ### Settings
 
-Configure Forks under the **Forks** section in settings (`forks.*`):
+Configure Forks under the **Forks Next** section in settings (`forks.next.*`):
 
-- **forks.types** – Branch type prefixes in the picker (default: `feature`, `bug`, `hotfix`)
-- **forks.maxSlugLength** – Max length for the slug part (default: `80`)
-- **forks.statusBarLabel** – Status bar text (default: `$(git-branch) forks`; Codicons supported)
+- **forks.next.types** – Branch type prefixes in the picker (default: `feature`, `bug`, `hotfix`)
+- **forks.next.maxSlugLength** – Max length for the slug part (default: `80`)
+- **forks.next.statusBarLabel** – Status bar text (default: `$(git-branch) forks`; Codicons supported)
+- **forks.next.useLastSegmentAsBase** – Use the last segment of the current branch as the base branch (default: `false`)
+
+#### `forks.next.useLastSegmentAsBase`
+
+When you work on a branch that already contains nested segments (e.g. `feature/master/test`), Forks normally uses the **entire** current branch name as the base, producing deeply nested results like:
+
+```
+feature/feature-master-test/my-new-feature
+```
+
+Enabling `useLastSegmentAsBase` tells Forks to use only the **last segment** (`test`) as the base branch instead:
+
+```
+feature/test/my-new-feature
+```
+
+| Current branch | Disabled (default) | Enabled |
+|---|---|---|
+| `main` | `feature/main/...` | `feature/main/…` (unchanged) |
+| `feature/master/test` | `feature/feature-master-test/...` | `feature/test/...` |
+| `bug/hotfix/login-bug` | `feature/bug-hotfix-login-bug/...` | `feature/login-bug/...` |
+
+### Slugification
+
+- Titles are lowercased and most non-alphanumeric characters become hyphens.
+- **Dots (`.`) and underscores (`_`) are always preserved** in the slug.
+
+Examples:
+
+| Title input | Slug output |
+|---|---|
+| `New UI for "User Profile" Page!` | `new-ui-for-user-profile-page` |
+| `fix login.page_v2` | `fix-login.page_v2` |
 
 Press **F5** to launch the Extension Development Host.
-
-## Support the Project
-
-If Forks helps your workflow, you can support the project (no pressure):
-
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/igobinda)
 
 ## Need Help?
 
 - **Docs**: See [docs/README.md](docs/README.md) for overview, [docs/architecture.md](docs/architecture.md) for data flow, and [docs/configuration.md](docs/configuration.md) for settings
 - **Issues**: Found a bug or have an idea? Open an issue on GitHub
-- **Repository**: [github.com/iNandi/forks](https://github.com/iNandi/forks)
+- **Repository**: [github.com/2501224066/forks](https://github.com/2501224066/forks)
 
 ## License
 
@@ -78,4 +105,4 @@ This project is licensed under the MIT License.
 
 ---
 
-**Made with ❤️ by Gobinda Nandi**
+**Made with ❤️ by PopoanFly**
