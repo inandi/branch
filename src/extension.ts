@@ -159,7 +159,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       const useLastSegment = getConfig().get<boolean>("next.useLastSegmentAsBase", false);
       const baseBranch = useLastSegment
-        ? sanitizeBranchSegment(baseBranchRaw.split("/").pop() || baseBranchRaw)
+        ? sanitizeBranchSegment(baseBranchRaw.split("/").pop() || baseBranchRaw, { keepDots: true })
         : sanitizeBranchSegment(baseBranchRaw);
 
       const types = getBranchTypes();
@@ -180,7 +180,7 @@ export function activate(context: vscode.ExtensionContext) {
       if (title === undefined) return;
 
       const maxLen = getMaxSlugLength();
-      const slug = slugify(title, maxLen);
+      const slug = slugify(title, maxLen, { keepDots: true });
       if (!slug) {
         throw new Error("Title produced an empty slug. Try a different title.");
       }

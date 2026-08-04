@@ -13,8 +13,9 @@ Forks is a small VS Code extension that wires UI prompts to a git command.
   - Reads current branch name (used as `baseBranch`)
   - Runs `git checkout -b <branchName>`
 - **Naming utilities**: `src/slugify.ts`
-  - `slugify(title, maxLen)` → `new-ui-for-user-profile-page`
-  - `sanitizeBranchSegment(baseBranch)` prevents `/` from leaking into the “base branch” segment
+  - `slugify(title, maxLen, options?)` → `new-ui-for-user-profile-page`
+  - `sanitizeBranchSegment(baseBranch, options?)` prevents `/` from leaking into the “base branch” segment
+  - Both accept `options.keepDots` to preserve `.` and `_` (used when `useLastSegmentAsBase` is enabled, and always for the title slug)
 
 ## Data flow
 

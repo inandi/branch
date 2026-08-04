@@ -79,7 +79,17 @@ feature/test/my-new-feature
 | `feature/master/test` | `feature/feature-master-test/...` | `feature/test/...` |
 | `bug/hotfix/login-bug` | `feature/bug-hotfix-login-bug/...` | `feature/login-bug/...` |
 
-This keeps branch names flat and readable when you branch off an already-structured branch.
+### Slugification
+
+- Titles are lowercased and most non-alphanumeric characters become hyphens.
+- **Dots (`.`) and underscores (`_`) are always preserved** in the slug.
+
+Examples:
+
+| Title input | Slug output |
+|---|---|
+| `New UI for "User Profile" Page!` | `new-ui-for-user-profile-page` |
+| `fix login.page_v2` | `fix-login.page_v2` |
 
 Press **F5** to launch the Extension Development Host.
 

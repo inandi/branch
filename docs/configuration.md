@@ -42,3 +42,17 @@ Example:
 
 `feature/main/new-ui-for-user-profile-page`
 
+### Slugification rules
+
+- Titles are lowercased and non-alphanumeric characters are replaced with hyphens.
+- Dots (`.`) and underscores (`_`) are **preserved** in the slug.
+- Consecutive separators are collapsed; leading/trailing hyphens are trimmed.
+
+Examples:
+
+| Title input | Slug output |
+|---|---|
+| `New UI for "User Profile" Page!` | `new-ui-for-user-profile-page` |
+| `fix login.page_v2` | `fix-login.page_v2` |
+| `1.2.3 release` | `1.2.3-release` |
+
